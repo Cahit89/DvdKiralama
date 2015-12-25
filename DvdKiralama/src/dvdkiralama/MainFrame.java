@@ -505,7 +505,14 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_filmKaydetBtnActionPerformed
 
     private void filmSilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmSilBtnActionPerformed
-        
+          String dvdid=filmSilTxt.getText();
+         String sonuc="Eksik bilgi girdiniz";
+         if(!dvdid.equals("")){
+             if(dk.dvdsil(dvdid)) sonuc="Silindi";
+             else sonuc="Silme Başarısız";
+         }
+         JOptionPane.showMessageDialog(this,sonuc);
+         filmSilTxt.setText("");
     }//GEN-LAST:event_filmSilBtnActionPerformed
 
     private void filmListeleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmListeleBtnActionPerformed
