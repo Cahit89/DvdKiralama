@@ -517,7 +517,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_filmListeleBtnActionPerformed
 
     private void filmAraTxtCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_filmAraTxtCaretUpdate
-       
+        DefaultTableModel m = new DefaultTableModel(bindDvdTable(dk.ismeGoreDvdAra(filmAraTxt.getText())) ,new String [] {
+                "Film Id", "Film Adı", "Tür","Durum"
+            });
+        filmTable.setModel(m);
+        jScrollPane2.setViewportView(filmTable);
     }//GEN-LAST:event_filmAraTxtCaretUpdate
 
     /**
