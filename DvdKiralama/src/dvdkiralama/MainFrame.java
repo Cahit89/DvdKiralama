@@ -471,7 +471,24 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uyeKaydetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uyeKaydetBtnActionPerformed
-       
+       String s;
+        if(uyeTcTxt.getText().equals("") || uyeAdTxt.getText().equals("")
+            || uyeSoyadTxt.getText().equals("") || uyeTelTxt.getText().equals(""))s="Eksik Bilgi";
+        else{
+            Uye uye=new Uye(uyeTcTxt.getText(),uyeAdTxt.getText(),
+                uyeSoyadTxt.getText(),uyeTelTxt.getText());
+            if(dk.uyeEkle(uye)){ 
+                s="Kaydedildi";
+              
+               uyeAdTxt.setText("");
+               uyeTcTxt.setText("");
+               uyeSoyadTxt.setText("");
+               uyeTelTxt.setText("");
+            
+            }
+            else s="Kaydetme Başarısız";
+        }
+        JOptionPane.showMessageDialog(this, s);
     }//GEN-LAST:event_uyeKaydetBtnActionPerformed
 
     private void uyeAraBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uyeAraBtnActionPerformed
@@ -485,7 +502,12 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_uyeSilBtnActionPerformed
 
     private void uyelisteleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uyelisteleBtnActionPerformed
-       
+       DefaultTableModel m = new DefaultTableModel(dk.uyelistele(),new String[]{
+            "Tc No","Ad","Soyad","Cep Tel" 
+        });
+        uyeTable.setModel(m);
+        jScrollPane1.setViewportView(uyeTable);
+                                                 
     }//GEN-LAST:event_uyelisteleBtnActionPerformed
 
     private void filmKaydetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmKaydetBtnActionPerformed
