@@ -492,12 +492,31 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_uyeKaydetBtnActionPerformed
 
     private void uyeAraBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uyeAraBtnActionPerformed
-      
+       if(uyeAraTxt.getText().equals("")) JOptionPane.showMessageDialog(this, "Bilgi girilmedi");
+       else{
+        
+             DefaultTableModel m = new DefaultTableModel(dk.tcyeGoreUyeAra(uyeAraTxt.getText()),new String[]{
+               "Tc No","Ad","Soyad","Cep Tel" 
+              });
+            uyeTable.setModel(m); 
+         
+    
+        jScrollPane1.setViewportView(uyeTable);
+       }
        
     }//GEN-LAST:event_uyeAraBtnActionPerformed
 
     private void uyeSilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uyeSilBtnActionPerformed
-        
+        String tc=uyeSilTxt.getText();
+         String sonuc="Eksik bilgi girdiniz";
+         if(!tc.equals("")){
+             if(dk.uyesil(tc)) {
+                 sonuc="Silindi";
+                 uyeSilTxt.setText("");
+             }
+             else sonuc="Silme Başarısız";
+         }
+         JOptionPane.showMessageDialog(this,sonuc);
        
     }//GEN-LAST:event_uyeSilBtnActionPerformed
 
